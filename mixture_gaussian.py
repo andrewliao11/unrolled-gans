@@ -11,8 +11,8 @@ class data_generator(object):
     def __init__(self):
 
         n = 8
-        radius = 5
-        std = 0.5
+        radius = 2
+        std = 0.02
         delta_theta = 2*np.pi / n
 
         centers_x = []
