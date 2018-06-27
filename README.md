@@ -30,8 +30,6 @@ I try to make the data distribution harder by making the weight of the mixture g
 
 Slight improvement can be observed. Glad to see that the unrolled objective does work at least in my experiement settings. :smile:
 
-Larger improvement can be oberserved in the following experiments
-
 ### Case 2 (failure case):
 - unrolled steps = 0
 
@@ -41,7 +39,9 @@ Larger improvement can be oberserved in the following experiments
 
 ![](imgs/unrolled_steps-10-prior_std-0.12-tanh.png) 
 
-## other experiment settings
+Larger improvement can be oberserved in the following experiments
+
+## Other experiment settings
 
 I found that *in this eperiments*, using `F.relu` (what the author used in the paper) results in larger gap:
 
