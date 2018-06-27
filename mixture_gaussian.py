@@ -41,7 +41,7 @@ class data_generator(object):
 
     # switch to uniform distribution
     def uniform_distribution(self):
-        p = [1./n for _ in range(self.n)]
+        p = [1./self.n for _ in range(self.n)]
         self.p = p
 
     def sample(self, N):
