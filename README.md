@@ -3,7 +3,7 @@
 PyTorch implementation of [Unrolled Generative Adversarial Networks](https://arxiv.org/abs/1611.02163). The official tensorflow implementation is [here](https://github.com/poolio/unrolled_gan).
 
 There is an issue posted in the official repo complaining that **"Couldn't reproduce mode collapse without unrolling operation"**. 
-I also found this issue (especially when using `F.tanh` as activation function) when implemented this repo, and found it rather interesting. 
+I also found this issue (especially when using `F.tanh` as activation function) when implemented this repo, and found it pretty interesting. 
 
 Here are the corresponding results:
 
@@ -27,12 +27,13 @@ I try to make the data distribution harder by making the weight of the mixture g
 
 ![](imgs/unrolled_steps-10-prior_std-0.00-tanh.png) 
 
-Glad to see that the unrolled objective does work at least in my experiement settings. :smile:
+Slight improvement can be observed. Glad to see that the unrolled objective does work at least in my experiement settings. :smile:
 
+Larger improvement can be oberserved in the following experiments
 
 ## other experiment settings
 
-I found that *in this eperiments*, using `F.relu` results in larger gap:
+I found that *in this eperiments*, using `F.relu` (what the author used in the paper) results in larger gap:
 
 ### uniform mixture of gaussian
 
