@@ -2,7 +2,7 @@
 
 PyTorch implementation of [Unrolled Generative Adversarial Networks](https://arxiv.org/abs/1611.02163). The official tensorflow implementation is [here](https://github.com/poolio/unrolled_gan).
 
-There is an issue posted in the official repo complaining that **"Couldn't reproduce mode collapse without unrolling operation"**. 
+There is an issue posted in the official repo complaining that [**"Couldn't reproduce mode collapse without unrolling operation"**](https://github.com/poolio/unrolled_gan/issues/2). 
 I also found this issue (especially when using `F.tanh` as activation function) when implemented this repo, and found it pretty interesting. 
 
 Here are the corresponding results:
