@@ -24,17 +24,32 @@ class data_generator(object):
         centers_x = np.expand_dims(np.array(centers_x), 1)
         centers_y = np.expand_dims(np.array(centers_y), 1)
 
+        p = [1./n for _ in range(n)]
+
+        self.p = p
         self.size = 2
         self.n = n
         self.std = std
         self.centers = np.concatenate([centers_x, centers_y], 1)
+
+    # switch to random distribution (harder)
+    def random_distribution(self, p=None):
+        if p is None:
+            p = [np.random.uniform() for _ in range(self.n)]
+            p = p / np.sum(p)
+        self.p = p
+
+    # switch to uniform distribution
+    def uniform_distribution(self):
+        p = [1./n for _ in range(self.n)]
+        self.p = p
 
     def sample(self, N):
         n = self.n
         std = self.std
         centers = self.centers
 
-        ith_center = np.random.choice(n, N)
+        ith_center = np.random.choice(n, N,p=self.p)
         sample_centers = centers[ith_center, :]
         sample_points = np.random.normal(loc=sample_centers, scale=std)
         return sample_points.astype('float32')
