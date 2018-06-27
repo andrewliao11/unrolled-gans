@@ -2,31 +2,56 @@
 
 PyTorch implementation of [Unrolled Generative Adversarial Networks](https://arxiv.org/abs/1611.02163). The official tensorflow implementation is [here](https://github.com/poolio/unrolled_gan).
 
-There is an issue posted in the official repo complaining that *"Couldn't reproduce mode collapse without unrolling operation"*. 
-I also found this issue when implemented this repo, and found it rather interesting. 
+There is an issue posted in the official repo complaining that **"Couldn't reproduce mode collapse without unrolling operation"**. 
+I also found this issue (especially when using `F.tanh` as activation function) when implemented this repo, and found it rather interesting. 
 
 Here are the corresponding results:
 
-| unrolled steps = 0| unrolled steps = 10 |
-|-------------------|---------------------|
-| ![]('imgs/unrolled_steps-0-prior_std-0.00.png') | ![]('imgs/unrolled_steps-10-prior_std-0.00.png') |
+**unrolled steps = 0**
+
+![](imgs/unrolled_steps-0-prior_std-0.06-tanh.png) 
+
+**unrolled steps = 10**
+
+![](imgs/unrolled_steps-10-prior_std-0.06-tanh.png) 
 
 It's well-known that there are too many factors affect the GAN training, and 
 I started to doubt whether the unrolled objective does help the GAN trainin or avoid mode collapse.
 I try to make the data distribution harder by making the weight of the mixture gaussian non-uniform, so that the generator will be harder to cover all modes.
 
-Here are some results:
 
-| unrolled steps = 0| unrolled steps = 10 |
-|-------------------|---------------------|
-| ![]('imgs/unrolled_steps-0-prior_std-0.06.png') | ![]('imgs/unrolled_steps-10-prior_std-0.06.png') |
+**unrolled steps = 0**
+
+![](imgs/unrolled_steps-0-prior_std-0.00-tanh.png) 
+
+**unrolled steps = 10**
+
+![](imgs/unrolled_steps-10-prior_std-0.00-tanh.png) 
 
 Glad to see that the unrolled objective does work at least in my experiement settings. :smile:
 
+
 ### other experiment settings
 
-I found that *in this case*, using `F.relu` results in better results:
+I found that *in this eperiments*, using `F.relu` results in larger gap:
 
-| unrolled steps = 0| unrolled steps = 10 |
-|-------------------|---------------------|
-| ![]('imgs/unrolled_steps-0-prior_std-0.06-tanh.png') | ![]('imgs/unrolled_steps-10-prior_std-0.06-tanh.png') |
+#### uniform mixture of gaussian
+
+**unrolled steps = 0**
+
+![](imgs/unrolled_steps-0-prior_std-0.00.png) 
+
+**unrolled steps = 10**
+
+![](imgs/unrolled_steps-10-prior_std-0.00.png) 
+
+
+#### non-uniform mixture of gaussian
+
+**unrolled steps = 0**
+
+![](imgs/unrolled_steps-0-prior_std-0.06.png) 
+
+**unrolled steps = 10**
+
+![](imgs/unrolled_steps-10-prior_std-0.06.png) 
